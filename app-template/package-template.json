@@ -85,6 +85,8 @@
     "sign:android": "rm -f platforms/android/app/build/outputs/apk/release/android-release-signed-aligned.apk; jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ../copay.keystore -signedjar platforms/android/app/build/outputs/apk/release/android-release-signed.apk platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk  copay_play && $ANDROID_HOME/build-tools/26.0.1/zipalign -v 4 platforms/android/app/build/outputs/apk/release/android-release-signed.apk platforms/android/app/build/outputs/apk/release/android-release-signed-aligned.apk",
     "apply:copay": "npm i fs-extra shelljs && cd app-template && node apply.js copay && cd .. && npm i",
     "apply:bitpay": "npm i fs-extra shelljs && cd app-template && node apply.js bitpay && cd .. && npm i",
+    "apply:rapture": "npm i fs-extra && cd app-template && node apply.js rapture && npm i && cordova prepare",
+
     "fix:fcm": "echo platforms/ios/Copay/Resources platforms/ios/Copay/Resources/Resources platforms/ios/Bitpay/Resources platforms/ios/Bitpay/Resources/Resources | xargs -n 1 cp GoogleService-Info.plist 2>/dev/null; mkdir -p platforms/android/app/src/debug platforms/android/app/src/release; echo platforms/android/app/src/debug platforms/android/app/src/release platforms/android/app | xargs -n 1 cp google-services.json"
   },
   "dependencies": {
@@ -117,7 +119,7 @@
     "@zxing/ngx-scanner": "1.1.0-dev06cf75",
     "angular2-moment": "1.7.1",
     "bitauth": "git+https://github.com/bitpay/bitauth.git#copay",
-    "bitcore-wallet-client": "6.7.4",
+    "bitcore-wallet-client": "https://github.com/RaptureCore/bitcore-wallet-client-rapture",
     "buffer-compare": "1.1.1",
     "cordova-android": "7.1.0",
     "cordova-clipboard": "1.1.1",
